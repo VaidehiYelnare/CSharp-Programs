@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace FileDigitsSum
+{
+    class Program
+    {
+        static readonly string textFile = @"C:\Vaidehi\IMPORTANT\IMP.txt";
+
+        static void Main(string[] args)
+        {
+            if (File.Exists(textFile))
+            {
+              
+                string dataoffile = File.ReadAllText(textFile);              
+                       
+                int sum = 0;              
+
+                char[] chars = dataoffile.ToCharArray();
+
+                for (int i = 0; i < chars.Length; i++)
+                {
+                    sum = (chars[i] >= '0' && chars[i] <= '9') ?  (sum + Convert.ToInt32(Convert.ToString(chars[i]))) : sum;
+                }
+                Console.WriteLine("Sum of all digits in file = " + sum);
+                Console.ReadKey();
+               
+            }
+        }
+    }
+}
